@@ -1,0 +1,54 @@
+﻿<Window x:Class="myRsa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:myRsa"
+        mc:Ignorable="d"
+        Title="Chiffrement RSA" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*"/>
+            <RowDefinition Height="190*"/>
+            <RowDefinition Height="81*"/>
+            <RowDefinition Height="54*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Message à chiffrer" HorizontalAlignment="Left" VerticalAlignment="Top"
+               FontSize="25" Height="43" Width="212"/>
+        <TextBox Grid.Row="1"  Name="tbMsgCipher" HorizontalAlignment="Center" VerticalAlignment="Center" Height="170" Width="300">
+            Bonjour Bob, ici Alice
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="2" Content="Clé publique du destinataire :"
+               FontSize="15" Margin="12,36,82,4"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="N:"
+            FontSize="15" Margin="238,20,43,30"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="E:"
+            FontSize="15" Margin="282,20,8,30"/>
+        <TextBox Grid.Column="0" Grid.Row="2" x:Name="tbOtherPkN" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="30" Text="0" Margin="236,51,0,0"/>
+        <TextBox Grid.Column="0" Grid.Row="2" x:Name="tbOtherPkE" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="30" Text="0" Margin="282,51,0,0"/>
+        <Button Grid.Column="0" Grid.Row="2" Content="Lire un fichier" FontSize="12" Click="readFromFileCipher" Margin="91,3,91,55"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Chiffrer" FontSize="20" Click="call_cipher" Height="50" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="stackPanel_Loaded" Height="72" Width="100">
+            <Label Content="Your Public Key :"/>
+            <Label Name="lbPubKey"/>
+            <Label Content="Your Private Key :"/>
+            <Label Name="lbPrivKey"/>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="3" Content="Générer les clés" FontSize="20" Click="generate_keys" Height="50" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0"/>
+
+        <Label Grid.Column="2" Grid.Row="0" Content="Message à déchiffrer" HorizontalAlignment="Right" VerticalAlignment="Top"
+               FontSize="25" Height="43" Width="239"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Name="tbMsgDecipher" HorizontalAlignment="Center" VerticalAlignment="Center" Height="170" Width="300">
+            Bonjour Alice, ici Bob
+        </TextBox>
+        <Button Grid.Column="2" Grid.Row="2" Content="Lire un fichier" FontSize="12" Click="readFromFileDecipher" Margin="81,4,101,54"/>
+        <Button Grid.Column="2" Grid.Row="2" Content="Sauvegarder dans un fichier" FontSize="12" Click="saveInFile" Margin="66,36,86,24"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="Déchiffrer" FontSize="20" Click="call_decipher" Height="50" Width="150" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
